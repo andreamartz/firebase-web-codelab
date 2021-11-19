@@ -101,9 +101,26 @@ function isUserSignedIn() {
   return !!getAuth().currentUser;
 }
 
+/**
+ * To store the chat messages that are written by users, we'll use Cloud Firestore.
+
+In this section, you'll add the functionality for users to write new messages to your database. A user clicking the SEND button will trigger the code snippet below. It adds a message object with the contents of the message fields to your Cloud Firestore instance in the messages collection. The add() method adds a new document with an automatically generated ID to the collection.
+ */
+
 // Saves a new message on the Cloud Firestore.
 async function saveMessage(messageText) {
   // TODO 7: Push a new message to Cloud Firestore.
+  // Add a new message entry to Cloud Firestore
+  try {
+    await addDoc(collection(getFirestore(), 'messages'), {
+      name: getUserName(),
+      text: messageText,
+      profilePicUrl: getProfilePicUrl(),
+      timestamp: serverTimestamp(),
+    });
+  } catch (error) {
+    console.error('Error writing new message to Firebase Database', error);
+  }
 }
 
 // Loads chat messages history and listens for upcoming ones.
