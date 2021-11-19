@@ -51,16 +51,23 @@ import { getFirebaseConfig } from './firebase-config.js';
 async function signIn() {
   alert('TODO: Implement Google Sign-In');
   // TODO 1: Sign in Firebase with credential from the Google user.
+  // Sign in Firebase using popup auth and Google as the identity provider.
+  const provider = new GoogleAuthProvider();
+  await signInWithPopup(getAuth(), provider);
 }
 
 // Signs-out of Friendly Chat.
 function signOutUser() {
   // TODO 2: Sign out of Firebase.
+  // Sign out of Firebase.
+  signOut(getAuth());
 }
 
-// Initiate firebase auth
+// Initialize firebase auth
 function initFirebaseAuth() {
   // TODO 3: Subscribe to the user's signed-in status
+  // Listen to auth state changes.
+  onAuthStateChanged(getAuth(), authStateObserver);
 }
 
 // Returns the signed-in user's profile Pic URL.
