@@ -70,19 +70,36 @@ function initFirebaseAuth() {
   onAuthStateChanged(getAuth(), authStateObserver);
 }
 
+/**
+ * Todos 4 & 5: Display the information of the signed-in user
+ *
+ * We want to display the signed-in user's profile picture and user name in the top bar of our app. In Firebase, the signed-in user's data is always available in the currentUser object. Earlier, we set up the authStateObserver function to trigger when the user signs in so that our UI updates accordingly. It will call getProfilePicUrl and getUserName when triggered.
+ *  */
+
 // Returns the signed-in user's profile Pic URL.
 function getProfilePicUrl() {
   // TODO 4: Return the user's profile pic URL.
+  // Return the user's profile pic URL
+  return getAuth().currentUser.photoURL || '/images/profile_placeholder.png';
 }
 
 // Returns the signed-in user's display name.
 function getUserName() {
   // TODO 5: Return the user's display name.
+  // Returns the signed-in user's display name.
+  return getAuth().currentUser.displayName;
 }
+
+/**
+ * Todo 6:
+ *
+ * We display an error message if the user tries to send messages when the user isn't signed in. (You can try it, though!) So, we need to detect if the user is actually signed in.
+ *  */
 
 // Returns true if a user is signed-in.
 function isUserSignedIn() {
   // TODO 6: Return true if a user is signed-in.
+  return !!getAuth().currentUser;
 }
 
 // Saves a new message on the Cloud Firestore.
