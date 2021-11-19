@@ -49,7 +49,6 @@ import { getFirebaseConfig } from './firebase-config.js';
 
 // Signs-in Friendly Chat.
 async function signIn() {
-  alert('TODO: Implement Google Sign-In');
   // TODO 1: Sign in Firebase with credential from the Google user.
   // Sign in Firebase using popup auth and Google as the identity provider.
   const provider = new GoogleAuthProvider();
@@ -366,7 +365,7 @@ imageButtonElement.addEventListener('click', function (e) {
 });
 mediaCaptureElement.addEventListener('change', onMediaFileSelected);
 
-const firebaseAppConfig = getFirebaseConfig();
+// const firebaseAppConfig = getFirebaseConfig();
 // TODO 0: Initialize Firebase
 const firebaseAppConfig = getFirebaseConfig();
 initializeApp(firebaseAppConfig);
